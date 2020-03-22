@@ -10,17 +10,17 @@ $(document).ready(function () {
         {
             id: "0",
             hour: "07",
-            reminder: "07:00"
+            reminder: ""
         },
         {
             id: "1",
             hour: "08",
-            reminder: "08:00"
+            reminder: ""
         },
         {
             id: "2",
             hour: "09",
-            reminder: "09:00"
+            reminder: ""
         },
         {
             id: "3",
@@ -44,17 +44,17 @@ $(document).ready(function () {
         },
         {
             id: "7",
-            hour: "14",
+            hour: "16",
             reminder: ""
         },
         {
             id: "8",
-            hour: "15",
+            hour: "17",
             reminder: ""
         },
         {
             id: "9",
-            hour: "16",
+            hour: "18",
             reminder: ""
         }
     ]
@@ -75,7 +75,7 @@ $(document).ready(function () {
     function reminderSave() {
         console.log("Saving our reminder");
         localStorage.setItem("workDay", JSON.stringify(workDay));
-        console.log (JSON.stringify(workDay))
+        console.log(JSON.stringify(workDay))
     }
 
     function reminderDisplay() {
@@ -120,7 +120,7 @@ $(document).ready(function () {
         hourData.attr("id", hourNow.id);
         // Now change the colours of the planner items based upon the current hour.
         // Try to figure this into a switch statement
-       if (hourNow.hour < moment().format("HH")) {
+        if (hourNow.hour < moment().format("HH")) {
             hourData.attr({ "class": "past", })
         } else if (hourNow.hour === moment().format("HH")) {
             hourData.attr({ "class": "present" })
@@ -141,15 +141,28 @@ $(document).ready(function () {
     initializeMyDay();
 
     // Create an event, when we click the save button, save the data then display it
+
     $(".saveBtn").on("click", function (event) {
         event.preventDefault();
         console.log("Trying to save data");
+        // check to see what the current hour is and if less that the current one then
+        // advise cannot save to that section
+        var thisHour = moment();
+        console.log(thisHour.hour());
         // Here we're looking for the objects description then future then ID, this will become our index 
         // to the workDay array
-        var saveIndex = $(this).siblings(".description").children(".future").attr("id");
-        // this is saying goto workday item [saveIndex] and set the reminder to the clicking buttons children
-        workDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
-        reminderSave();
-        reminderDisplay();
+        // Here we're going to catch errors on setting events to the current or prior
+        // time slots
+        try {
+            var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+            console.log("Save Index: ", saveIndex);
+            // this is saying goto workday item [saveIndex] and set the reminder to the clicking buttons children
+            workDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+            reminderSave();
+            reminderDisplay();
+        }
+        catch (err) {
+            alert ("You cannot update current or prior time slots");
+        }
     })
 });
