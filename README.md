@@ -36,7 +36,7 @@ Version 1.1: 21st March 2020: Resolution of multiple bugs
 This was developed with HTML5, CSS3, Javascript, JQuery, fontawesome and moment.js utilizing Visual Studio Code
 
 ## Usage
-https://https://saunderseddie.github.io/DayScheduler/index.html
+https://saunderseddie.github.io/DayScheduler/index.html
 
 ## Credits
 fontawesome - https://www.fontawesome.com <br/>
