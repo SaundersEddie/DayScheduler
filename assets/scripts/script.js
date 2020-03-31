@@ -90,25 +90,14 @@ $(document).ready(function () {
     // For now, just display the date including day name
     $('#clock').html(moment().format('dddd Do MMM YYYY'));
 
-    // function update() {
-    //         //$('#clock').html(moment().format('dddd Do MMM YYYY HH:mm'));
-    //         // if we just want to display the date wikth no clock update we can do the following, and remove tghe setInterval later on
-    //         $('#clock').html(moment().format('dddd Do MMM YYYY'));
-    // }
-    // // setInterval(update, 1000);
-
     function reminderSave() {
-        console.log("Saving our reminder");
         localStorage.setItem("workDay", JSON.stringify(workDay));
-        console.log(JSON.stringify(workDay))
     }
 
     function reminderDisplay() {
         //console.log("Display our reminders");
         workDay.forEach(function (currentHour) {
             $(`#${currentHour.id}`).val(currentHour.reminder);
-            // console.log("Reminder Display: ", workDay);
-            // console.log("Reminder currentHour: ", currentHour.id);
         })
     }
 
@@ -160,7 +149,6 @@ $(document).ready(function () {
         // append all our new items to the table display.
         planSave.append(saveButton);
         rowHour.append(hourField, planHour, planSave);
-
     })
 
     initializeMyDay();
@@ -173,21 +161,21 @@ $(document).ready(function () {
         // check to see what the current hour is and if less that the current one then
         // advise cannot save to that section
         var thisHour = moment();
-        console.log("Current Hour: ",thisHour.hour());
+        console.log("Current Hour: ", thisHour.hour());
         // Here we're looking for the objects description then future then ID, this will become our index 
         // to the workDay array
         // Here we're going to catch errors on setting events to the current or prior
         // time slots
-        // try {
-        var saveIndex = $(this).siblings(".description").children(".future").attr("id");
-        console.log("Save Index: ", saveIndex);
-        // this is saying goto workday item [saveIndex] and set the reminder to the clicking buttons children
-        workDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
-        reminderSave();
-        reminderDisplay();
-        //  }
-        //    catch (err) {
-        //         alert ("You cannot update current or prior time slots");
-        //  }
+        try {
+            var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+            console.log("Save Index: ", saveIndex);
+            // this is saying goto workday item [saveIndex] and set the reminder to the clicking buttons children
+            workDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+            reminderSave();
+            reminderDisplay();
+        }
+        catch (err) {
+            alert("You cannot update current or prior time slots");
+        }
     })
 });

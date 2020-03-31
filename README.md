@@ -31,6 +31,7 @@ THEN the saved events persist
 ## Current Build Status
 Version 1: 20th March 2020 Initial testing build<br/>
 Version 1.1: 21st March 2020: Resolution of multiple bugs
+Version 1.2: 31st March 2020: Code to prevent user from saving items in current or previous slot.
 
 ## Code
 This was developed with HTML5, CSS3, Javascript, JQuery, fontawesome and moment.js utilizing Visual Studio Code
