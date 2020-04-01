@@ -30,18 +30,21 @@ THEN the saved events persist
 
 ## Current Build Status
 Version 1: 20th March 2020 Initial testing build<br/>
-Version 1.1: 21st March 2020: Resolution of multiple bugs
-Version 1.2: 31st March 2020: Code to prevent user from saving items in current or previous slot.
+Version 1.1: 21st March 2020: Resolution of multiple bugs<br/>
+Version 1.2: 31st March 2020: Code to prevent user from saving items in current or previous slot.<br/>
+Version 1.2: 1st April 2020: Appears to be an intermittent bug in the save function, implementing try/catch to see if it works <br/>
 
 ## Code
 This was developed with HTML5, CSS3, Javascript, JQuery, fontawesome and moment.js utilizing Visual Studio Code
+Repository can be found on the following githb
+https://github.com/SaundersEddie/DayScheduler
 
 ## Usage
 https://saunderseddie.github.io/DayScheduler/index.html
 
 ## Credits
 fontawesome - https://www.fontawesome.com <br/>
-moment.js - https://momentjs.com/
+moment.js - https://momentjs.com/ <br/>
 Code study session - Richard Kessler, Shiva, Travis Cultreri, Yalmar Mairena
 
 ## Results
